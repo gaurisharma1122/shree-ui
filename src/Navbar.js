@@ -21,7 +21,7 @@ function Navbar() {
                                 <NavLink activeClassName="menu_active" className="nav-link" to="/about">About</NavLink>
                               </li>
                               <li className="nav-item">
-                                <NavLink activeClassName="menu_active" className="nav-link" to="/service">Services</NavLink>
+                                <NavLink activeClassName="menu_active" className="nav-link" to="/service">Features</NavLink>
                               </li>
                               <li className="nav-item">
                                 <NavLink activeClassName="menu_active" className="nav-link" to="/contact">Contact</NavLink>

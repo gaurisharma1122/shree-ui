@@ -8,10 +8,10 @@ function About() {
       <Common 
        name="What is "
        imgsrc={web} 
-       para="Shree exposes your local server to the public internet over secured tunnels"
+       para="Shree exposes your local server to the public internet over secured tunnels by creating an encrypted SSH connection between a client and a server machine through which services ports can be relayed. It is an easy interface to expose HTTP/HTTP(s) endpoints over Internet/Intranet."
        additional="?"
        visit="/contact"
-       btname="Contact Now" />
+       btname="Get me in" />
       </>
     );
   }

@@ -33,37 +33,38 @@ function Contact() {
           <div className="col-md-6 col-10 mx-auto">
             <form>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Enter Your Name</label>
+                <label for="exampleFormControlEmail" class="form-label">Email</label>
                 <input 
                 type="text" 
                 class="form-control" 
-                id="exampleFormControlInput1" 
+                id="exampleFormControlEmail" 
                 /*name="fullname"
                 value={data.fullname}
                 onChange={InputEvent}*/
-                placeholder="Write your name here..." />
+                placeholder="Enter your email" />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <label for="exampleFormControlUsername" class="form-label">Username</label>
                 <input 
                 type="email" 
                 class="form-control" 
-                id="exampleFormControlInput1"
+                id="exampleFormControlUsername"
                 /*name="email"
                 value={data.email}
                 onChange={InputEvent}*/
-                placeholder="name@example.com" />
+                placeholder="Enter your username" />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                <textarea 
+                <label for="exampleFormControlPassword" class="form-label">Password</label>
+                <input 
+                type="password"
                 class="form-control" 
-                id="exampleFormControlTextarea1" 
-                rows="3"
+                id="exampleFormControlPassword" 
+                
                 /*name="msg"
                 value={data.msg}
                 onChange={InputEvent}*/
-                ></textarea>
+                ></input>
               </div>
               <div class="col-12">
                 <button class="btn btn-outline-primary" type="submit"> Submit Form</button>
