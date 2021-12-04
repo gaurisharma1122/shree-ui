@@ -15,6 +15,8 @@ function Service() {
               {Sdata.map((val, ind) => {
                 return (
                   <Card
+                    text={val.text}
+                    goto={val.goto}
                     key={ind}
                     imgsrc={val.imgsrc}
                     title={val.title}
