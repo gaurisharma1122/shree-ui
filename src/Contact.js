@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 function Contact() {
 
   /*const [data, setData] = useState({
@@ -26,7 +27,7 @@ function Contact() {
     return (
       <>
       <div className="my-5">
-        <h1 className="text-center">Contact Us</h1>
+        <h1 className="text-center">Get Started</h1>
       </div>
       <div className="container contact_div">
         <div className="row">
@@ -60,6 +61,7 @@ function Contact() {
                 type="password"
                 class="form-control" 
                 id="exampleFormControlPassword" 
+                placeholder="Enter password"
                 
                 /*name="msg"
                 value={data.msg}
@@ -67,8 +69,9 @@ function Contact() {
                 ></input>
               </div>
               <div class="col-12">
-                <button class="btn btn-outline-primary" type="submit"> Submit Form</button>
-
+                <div className="mt-3">
+                      <NavLink to="/service" className="btn btn-outline-primary btn-get-started">Get Started</NavLink>
+                </div>
               </div>
             </form>
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import web from "../src/images/img1.svg";
+//import web from "../src/images/img1.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from "react-router-dom";
 function Common(props) {

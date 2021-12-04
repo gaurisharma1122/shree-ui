@@ -1,41 +1,33 @@
 import React from "react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import LocalTunnel from "./LocalTunnel";
 import ListTunnels from "./ListTunnels";
 import RemoteTunnel from "./RemoteTunnel";
 
-
-function Card({imgsrc, title, text, buttonText, action}) {
-  const [openModal, setopenModal] = useState(false);
+function Card({imgsrc, title, text, buttonText, goto, action}) {
+  /*
+ const [openModal, setopenModal] = useState(false);
   let ModalBox;
   switch(action){
     case 'local_tunnel': ModalBox=<LocalTunnel />; break;
     case 'remote_tunnel': ModalBox= RemoteTunnel; break;
     case 'list_tunnel': ModalBox= ListTunnels; break;
-    
-  }
+  }*/
   return (
     <>
-    {ModalBox}
       <div className="col-md-4 col-10 mx-auto">
         <div className="card">
           <img src={imgsrc} className="card-img-top" alt={imgsrc} />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {text}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
             </p>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                setopenModal(true);
-                console.log('HELLO');
-              }}
-              data-bs-toggle="modal" data-bs-target="#exampleModal"
-            >
-              {buttonText}
-            </button>
+            <div className="mt-3">
+              <NavLink to="/localTunnel" className="btn btn-outline-primary btn-get-started">{buttonText}</NavLink>
+            </div>
           </div>
         </div>
       </div>

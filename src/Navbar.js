@@ -20,11 +20,12 @@ function Navbar() {
                               <li className="nav-item">
                                 <NavLink activeClassName="menu_active" className="nav-link" to="/about">About</NavLink>
                               </li>
+                              {/* 
                               <li className="nav-item">
                                 <NavLink activeClassName="menu_active" className="nav-link" to="/service">Features</NavLink>
-                              </li>
+                              </li>*/}
                               <li className="nav-item">
-                                <NavLink activeClassName="menu_active" className="nav-link" to="/contact">Contact</NavLink>
+                                <NavLink activeClassName="menu_active" className="nav-link" to="/contact">Get Started</NavLink>
                               </li>
                               
                           </ul>
