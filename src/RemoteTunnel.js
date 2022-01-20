@@ -4,8 +4,30 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import baseUrl from './url';
 
-function RemoteTunnel({ showModal, changeShowState }) {
+function RemoteTunnel() {
+
+  const destPortRef= React.createRef();
+
+  const createRemoteTunnel= ()=>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "dest":destPortRef.current.value
+   })
+  };
+    
+    const url= baseUrl+'/remote';
+
+    fetch(url, requestOptions)
+    .then(response=> response.json())
+    .then(data=>{
+      console.log(data.success);
+      console.log(data.body);
+    });
+  };
 
   return(
 
@@ -21,6 +43,7 @@ function RemoteTunnel({ showModal, changeShowState }) {
               <div className="mb-3">
                 <label for="exampleFormControlUsername" className="form-label">Destination Port</label>
                 <input 
+                ref={destPortRef}
                 type="text" 
                 className="form-control" 
                 id="exampleFormControlUsername"
@@ -30,7 +53,7 @@ function RemoteTunnel({ showModal, changeShowState }) {
                 placeholder="Enter Destination Port" />
               </div>
               <div className="my-4 col-12">
-                <button type="button" className="btn btn-outline-primary">Create Tunnels</button>
+                <button type="button" className="btn btn-outline-primary" onClick={createRemoteTunnel}>Create Tunnels</button>
               </div>
             </form>
           </div>

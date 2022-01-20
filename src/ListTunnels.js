@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import baseUrl from './url';
+
 function ListTunnels() {
-  const APIUrl = "https://randomuser.me/api";
+  const APIUrl = baseUrl+'/list';
 
   const dummyData = [
     {
@@ -34,16 +36,18 @@ function ListTunnels() {
     fetch(APIUrl).
       then(response => response.json()).
       then(data => {
-        const newData2=data.results.map((ele, ind)=>{
+        const newData2=data.body.map((ele, ind)=>{
           return{
             id: ind,
-            type: ele.name.title,
-            src: ele.name.first,
-            dest: ele.name.last
+            type: ele.type,
+            src: ele.src,
+            dest: ele.dest
           }
         });
         console.log(Date.now());
         console.log(data);
+        console.log(data.error);
+
         setData(newData2);
         setInprogress(false);
 
@@ -52,13 +56,17 @@ function ListTunnels() {
   }, [fetchEffectDependency]);
 
   const Spinner = () => {
-    return (<div className="spinner-border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>);
+    return (
+      <div className="mx-5 my-5 ">
+        <div className="spinner-border d-flex align-items-center" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
   const removeRow = (id) => {
     const newData = data.filter((element) => {
-      return element.id != id;
+      return element.id !== id;
     });
     setData(newData);
   }
@@ -68,18 +76,35 @@ function ListTunnels() {
   const Row = ({ id, type, src, dest, removeRowFunct }) => {
     const disconnectHandler = () => {
       //something in backend
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          "dest":dest,
+          "type":type
+     })
+    };
+      const disconnectUrl= baseUrl+'/disconnect';
+      fetch(disconnectUrl, requestOptions)
+      .then(response=> response.json())
+      .then(data=>{
+        console.log(data.error);
+        console.log(data.body);
+      });
       removeRowFunct(id);
     }
 
     return (
-      < tr>
-        <td colSpan="2">{type}</td>
-        <td colspan="2">{src}</td>
-        <td colspan="2">{dest}</td>
+      < tr className="">
+        <td colSpan="1">{type==0?'Local':'Remote'}</td>
+        <td colspan="1">{src}</td>
+        <td colspan="1">{dest}</td>
         <td><button type="button" className="my-1 btn btn-primary" onClick={disconnectHandler}>Disconnect</button></td>
       </tr>
     );
   }
+
+
   return (
     <>
       <div className="my-5">
@@ -99,6 +124,7 @@ function ListTunnels() {
           <tbody>
             {inprogress ? <Spinner /> :
               data.map((val, ind) => {
+                console.log('Id'+val.id);
                 return (
                   <Row type={val.type}
                     key={ind}

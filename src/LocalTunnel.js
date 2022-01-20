@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
@@ -6,16 +6,33 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import baseUrl from './url';
 
-function LocalTunnel({ showModal, changeShowState }) {
+function LocalTunnel() {
 
   const srcPortRef = React.createRef();
   const destPortRef= React.createRef();
 
-
+  
   const createLocalTunnel = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ "src":srcPortRef.current.value,
+        "dest":destPortRef.current.value
+   })
+  };
     console.log(srcPortRef.current.value);
     console.log(destPortRef.current.value);
+
+    const url= baseUrl+'/local';
+
+    fetch(url, requestOptions)
+    .then(response=> response.json())
+    .then(data=>{
+      console.log(data.error);
+      console.log(data.body);
+    });
   }
 
   return (
